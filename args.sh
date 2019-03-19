@@ -11,20 +11,18 @@ function print() {
 }
 
 function print_format_help() {
-    print "Format: '${SCRIPT_NAME}.sh $([ ! -z "$SCRIPT_POSITIONAL_ARGS" ] && echo " [COMMANDS]") [ARGUMENTS]'"
-    print ""
-    print "Commands: "
+    print "commands: "
     while read -r line; do
         if [ ! -z "$line" ]; then
-            print "* \e[1m$(echo $line | cut -d',' -f1)\033[0m\t$(echo $line | cut -d',' -f2)"
+            printf "* \e[1m$(echo $line | cut -d',' -f1)\033[0m\t$(echo $line | cut -d',' -f2)\n"
         fi
     done <<<"$SCRIPT_POSITIONAL_ARGS"
     if [ ! -z "$SCRIPT_NAMED_ARGS" ]; then
-        print ""
-        print "Available flags/arguments: "
+        echo ""
+        printf "Available flags/arguments: \n"
         while read -r line; do
             if [ ! -z "$line" ]; then
-                print "* $([ "$(echo $line | cut -d',' -f1)" == "FLAG" ] && echo "\e[1;33mFLAG\033[0m" || echo "\e[1;34mARG \033[0m")  -$(echo $line | cut -d',' -f2)\t --$(echo $line | cut -d',' -f3) \t$([ "$(echo $line | cut -d',' -f4)" == 1 ] && echo "\033[1;32mrequired\033[0m ")$(echo $line | cut -d',' -f5)"
+                printf "* $([ "$(echo $line | cut -d',' -f1)" == "FLAG" ] && echo "\e[1;33mFLAG\033[0m" || echo "\e[1;34mARG \033[0m")  -$(echo $line | cut -d',' -f2)\t --$(echo $line | cut -d',' -f3) \t$([ "$(echo $line | cut -d',' -f4)" == 1 ] && echo "\033[1;32mrequired\033[0m ")$(echo $line | cut -d',' -f5)\n"
             fi
         done <<<"$SCRIPT_NAMED_ARGS"
     fi
