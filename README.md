@@ -8,7 +8,7 @@ Provides argument parsing for your bash scripts. Supports parameters arguments (
 
 The script will read these variables to know what arguments to parse.
 
-Currently the variable name are hardcoded as such: "```SCRIPT_NAME```", "```SCRIPT_NAMED_ARGS```", and "```SCRIPT_POSITIONAL_ARGS```"
+Currently the variable name are hardcoded as such: ```SCRIPT_NAME```, ```SCRIPT_NAMED_ARGS```, and ```SCRIPT_POSITIONAL_ARGS```
 
 ```
 SCRIPT_NAME="build"
@@ -21,13 +21,19 @@ SCRIPT_POSITIONAL_ARGS=$'PACKAGE_NAMES,List of package names defined in cmd fold
 
 ```SCRIPT_NAMED_ARGS``` is separated with newlines, where each one is separated with commas (,)
 The first data declares wether the arguments is a flag or an parameter.
+
 The second data declares the short-hand CLI argument name for this argument which uses single dash (Example: -f)
+
 The third data declares the full CLI argument name for this argument which uses double dash (Example: --file). This is also used for the exported variable when parsing your arguments.
+
 The fourth data declares wether this argument is required (1) or optional (0).
+
 The fifth data declares the description of the argument.
 
 ```SCRIPT_POSITIONAL_ARGS``` also separated with newlines, where each one is separated with commas (,)
+
 The first data declares the variable name to be exported when parsing the arguments.
+
 The second data declares the description of the argument.
 
 #### Parsing
