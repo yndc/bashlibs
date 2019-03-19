@@ -5,11 +5,6 @@
 # Author    : Jonathan Steven (yondercode@gmail.com)
 # License   : MIT
 
-# Helper functions
-function print() {
-    printf "\033[1;32m${SCRIPT_NAME}.sh\033[0m ${1}\n"
-}
-
 function print_format_help() {
     print "commands: "
     while read -r line; do
@@ -59,10 +54,6 @@ function parse_inputs() {
         fi
     done
     set -- "${POSITIONAL[@]}"
-}
-
-function print_error() {
-    print "\033[0;31mError\033[0m ${1}"
 }
 
 parse_inputs $@
