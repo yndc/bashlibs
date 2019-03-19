@@ -26,5 +26,5 @@ function print_green() {
 }
 
 function print_error() {
-    print "\033[0;31mError\033[0m ${1}"
+    printf "\033[0;31mError\033[0m ${1}\n"
 }
