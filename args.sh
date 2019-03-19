@@ -22,7 +22,7 @@ function print_format_help() {
         printf "Available flags/arguments: \n"
         while read -r line; do
             if [ ! -z "$line" ]; then
-                printf "* $([ "$(echo $line | cut -d',' -f1)" == "FLAG" ] && echo "\e[1;33mFLAG\033[0m" || echo "\e[1;34mARG \033[0m")  -$(echo $line | cut -d',' -f2)\t --$(echo $line | cut -d',' -f3) \t$([ "$(echo $line | cut -d',' -f4)" == 1 ] && echo "\033[1;32mrequired\033[0m ")$(echo $line | cut -d',' -f5)\n"
+                printf "* $([ "$(echo $line | cut -d',' -f1)" == "FLAG" ] && echo "\e[1;33mFLAG\033[0m" || echo "\e[1;34mPARM\033[0m")  -$(echo $line | cut -d',' -f2)\t --$(echo $line | cut -d',' -f3) \t$([ "$(echo $line | cut -d',' -f4)" == 1 ] && echo "\033[1;32mrequired\033[0m ")$(echo $line | cut -d',' -f5)\n"
             fi
         done <<<"$SCRIPT_NAMED_ARGS"
     fi
@@ -44,7 +44,7 @@ function parse_inputs() {
                     if [ "$(echo $line | cut -d',' -f1)" == "FLAG" ]; then
                         eval "export $(echo $line | cut -d',' -f3 | xargs | awk '{print toupper($0)}' | tr -s '-' '_')=1"
                         shift
-                    elif [ "$(echo $line | cut -d',' -f1)" == "ARG" ]; then
+                    elif [ "$(echo $line | cut -d',' -f1)" == "PARM" ]; then
                         eval "export $(echo $line | cut -d',' -f3 | xargs | awk '{print toupper($0)}' | tr -s '-' '_')=$2"
                         shift
                         shift
