@@ -31,7 +31,7 @@ SCRIPT_NAMED_ARGS=$SCRIPT_NAMED_ARGS$'PARM,d,drink,0,\\tYour drink\n'
 # --with-ketchup is an optional flag 
 SCRIPT_NAMED_ARGS=$SCRIPT_NAMED_ARGS$'FLAG,wk,with-ketchup,0,Use ketchup with your food\n'
 
-# Now, source the args.sh
+# Now, source the args.sh. If this doesn't work, try running this outside of the examples folder
 . ./args.sh
 
 # Print the customer order
